@@ -20,3 +20,7 @@ def greatest_common_divisor(a: int, b: int) -> int:
 
 
 gcd = greatest_common_divisor
+
+
+def coprime(a: int, b: int) -> bool:
+    return gcd(a, b) == 1
