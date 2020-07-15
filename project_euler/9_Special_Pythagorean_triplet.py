@@ -1,6 +1,6 @@
 from math import sqrt
 
-from .com import naturals, greatest_common_divisor
+from .com import naturals, gcd
 
 
 TARGET_SUM = 1000
@@ -35,7 +35,7 @@ def euclids_formula(n: int, m: int) -> (int, int, int):
 def primitive_pythagorean_triplets():
     for z in naturals():
         n, m = inverse_cantor(z)
-        if not (m > n > 0 and greatest_common_divisor(n, m) == 1):
+        if not (m > n > 0 and gcd(n, m) == 1):
             continue
         a, b, c = euclids_formula(n, m)
         yield a, b, c
