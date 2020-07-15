@@ -47,7 +47,12 @@ def find_special_triplet(target_sum=TARGET_SUM):
         div, mod = divmod(target_sum, a + b + c)
         if mod == 0:
             return a * div, b * div, c * div
+        if div < 1:
+            raise ValueError("Could not find Special Triplet")
 
 
 if __name__ == '__main__':
-    print(find_special_triplet())
+    try:
+        print(find_special_triplet())
+    except ValueError as e:
+        print(e)
