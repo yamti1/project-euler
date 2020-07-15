@@ -1,16 +1,9 @@
 from math import sqrt
 
+from .com import naturals, greatest_common_divisor
+
+
 TARGET_SUM = 1000
-
-
-def naturals():
-    """
-    An infinite generator of the natural numbers.
-    """
-    n = 0
-    while True:
-        yield n
-        n += 1
 
 
 def inverse_cantor(z: int) -> (int, int):
@@ -25,17 +18,6 @@ def inverse_cantor(z: int) -> (int, int):
     x = w - y
 
     return int(x), int(y)
-
-
-def greatest_common_divisor(a: int, b: int) -> int:
-    """
-    The largest number that divides both integers `a` and `b`.
-    """
-    # Source: https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
-
-    while b != 0:
-        a, b = b, a % b
-    return a
 
 
 def euclids_formula(n: int, m: int) -> (int, int, int):
