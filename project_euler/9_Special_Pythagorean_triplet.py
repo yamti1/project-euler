@@ -65,10 +65,14 @@ def find_special_triplet(target_sum=TARGET_SUM):
             raise ValueError("Could not find Special Triplet")
 
 
-if __name__ == '__main__':
+def main():
     try:
         a, b, c = find_special_triplet()
         print((a, b, c))
         print(f"Product: {a * b * c}")
     except ValueError as e:
         print(e)
+
+
+if __name__ == '__main__':
+    main()
