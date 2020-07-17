@@ -13,6 +13,7 @@ Find the product abc.
 """
 
 from math import sqrt
+from datetime import datetime
 
 from .com import naturals, coprime
 
@@ -46,10 +47,21 @@ def euclids_formula(n: int, m: int) -> (int, int, int):
     return a, b, c
 
 
+def will_triplet_be_primitive(n: int, m: int) -> bool:
+    """
+    Will the Pythagorean triple generated from n and m be primitive.
+    """
+    are_ordered = m > n > 0
+    are_coprime = coprime(n, m)
+    is_exactly_one_even = (m + n) % 2 == 1
+
+    return are_ordered and are_coprime and is_exactly_one_even
+
+
 def primitive_pythagorean_triplets():
     for z in naturals():
         n, m = inverse_cantor(z)
-        if not (m > n > 0 and coprime(n, m)):
+        if not will_triplet_be_primitive(n, m):
             continue
         a, b, c = euclids_formula(n, m)
         yield a, b, c
@@ -65,10 +77,17 @@ def find_special_triplet(target_sum=TARGET_SUM):
             raise ValueError("Could not find Special Triplet")
 
 
-if __name__ == '__main__':
+def main():
     try:
+        start = datetime.now()
         a, b, c = find_special_triplet()
+        end = datetime.now()
         print((a, b, c))
         print(f"Product: {a * b * c}")
+        print(f"Runtime: {(end - start).microseconds}ms")
     except ValueError as e:
         print(e)
+
+
+if __name__ == '__main__':
+    main()
