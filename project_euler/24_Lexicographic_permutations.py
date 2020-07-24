@@ -1,6 +1,8 @@
 from math import factorial
 from itertools import permutations
 
+from .com.timing import timed
+
 
 TARGET_INDEX = int(1e6)
 N = 10
@@ -27,5 +29,5 @@ def smart(n: int = N, target_index: int = TARGET_INDEX):
 
 
 if __name__ == '__main__':
-    print(f"Brute Force: {brute_force()}")
-    print(f"Smart: {smart()}")
+    print(f"Brute Force: {timed(brute_force)()}")
+    print(f"Smart: {timed(smart)()}")
