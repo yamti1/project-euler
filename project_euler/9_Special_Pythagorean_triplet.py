@@ -16,6 +16,7 @@ from math import sqrt
 from datetime import datetime
 
 from .com import naturals, coprime
+from .com.timing import timed
 
 
 TARGET_SUM = 1000
@@ -79,12 +80,9 @@ def find_special_triplet(target_sum=TARGET_SUM):
 
 def main():
     try:
-        start = datetime.now()
-        a, b, c = find_special_triplet()
-        end = datetime.now()
+        a, b, c = timed(find_special_triplet)()
         print((a, b, c))
         print(f"Product: {a * b * c}")
-        print(f"Runtime: {(end - start).microseconds}ms")
     except ValueError as e:
         print(e)
 
